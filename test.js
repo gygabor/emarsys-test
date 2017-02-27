@@ -77,3 +77,13 @@ test('route gets "U", "V", "W", "X", "Y", "Z" with rules according the specifica
   t.deepEqual(holiday.route([{ dest: 'U', rule: 'U' }, { dest: 'V', rule: 'W' }, { dest: 'W', rule: 'Z' }, { dest: 'X', rule: 'U' }, { dest: 'Y', rule: 'V' }, { dest: 'Z', rule: 'Z' }]), ['U', 'Z', 'W', 'V', 'X', 'Y']);
   t.end();
 });
+
+test('route gets "U", "V", "W", "X", "Y", "U"', function (t) {
+  t.deepEqual(holiday.route([{ dest: 'U', rule: 'U' }, { dest: 'V', rule: 'W' }, { dest: 'W', rule: 'W' }, { dest: 'X', rule: 'U' }, { dest: 'Y', rule: 'V' }, { dest: 'U', rule: 'U' }]), ['U', 'W', 'V', 'X', 'Y']);
+  t.end();
+});
+
+test('route gets "U", "V", "W", "X", "Y", "Z" ', function (t) {
+  t.deepEqual(holiday.route([{ dest: 'U', rule: 'Z' }, { dest: 'V', rule: 'V' }, { dest: 'W', rule: 'V' }, { dest: 'X', rule: 'Y' }, { dest: 'Y', rule: 'V' }, { dest: 'Z', rule: 'X' }]), ['V', 'Y', 'X', 'Z', 'U', 'W']);
+  t.end();
+});

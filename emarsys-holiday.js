@@ -20,6 +20,12 @@ const holiday = (function () {
         trip.splice(trip.indexOf(d.dest), 0, d.rule);
       }
     });
+    destination.forEach(function (d) {
+      if (trip.indexOf(d.dest) < trip.indexOf(d.rule)) {
+        trip.splice(trip.indexOf(d.rule), 1);
+        trip.splice(trip.indexOf(d.dest), 0, d.rule);
+      }
+    });
     return trip;
   }
   return {
