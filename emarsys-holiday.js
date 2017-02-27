@@ -2,11 +2,13 @@
 
 var holiday = (function () {
   function route(destination) {
-    console.log(destination.dest);
     let route = [];
-    if (destination.dest === destination.rule) {
-      route.push(destination.dest);
-    }
+    destination.forEach( function (d) {
+      if (d.dest === d.rule) {
+        route.push(d.dest);
+      }
+
+    })
     return route;
   }
 
