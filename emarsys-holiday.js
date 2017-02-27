@@ -1,8 +1,8 @@
 'use strict';
 
-var holiday = (function () {
+const holiday = (function () {
   function route(destination) {
-    let trip = [];
+    const trip = [];
     destination.forEach(function (d) {
       if (trip.indexOf(d.dest) === -1) {
         if (d.dest === d.rule) {
@@ -11,14 +11,18 @@ var holiday = (function () {
           trip.push(d.rule);
           trip.push(d.dest);
         }
+      } else if (d.dest !== d.rule) {
+        if (trip.indexOf(d.rule)) {
+          trip.splice(trip.indexOf(d.rule), 1);
+        }
+        trip.splice(trip.indexOf(d.dest), 0, d.rule);
       }
     });
     return trip;
   }
-
   return {
     route: route,
-  }
+  };
 })();
 
 module.exports = holiday;
