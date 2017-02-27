@@ -72,3 +72,8 @@ test('route gets "X", "X", "Z", "U" with "X => Z" rule', function (t) {
   t.deepEqual(holiday.route([{ dest: 'X', rule: 'Z' }, { dest: 'X', rule: 'Z' }, { dest: 'Z', rule: 'Z' }, { dest: 'U', rule: 'U' }]), ['Z', 'X', 'U']);
   t.end();
 });
+
+test('route gets "U", "V", "W", "X", "Y", "Z" with rules according the specification', function (t) {
+  t.deepEqual(holiday.route([{ dest: 'U', rule: 'U' }, { dest: 'V', rule: 'W' }, { dest: 'W', rule: 'Z' }, { dest: 'X', rule: 'U' }, { dest: 'Y', rule: 'V' }, { dest: 'Z', rule: 'Z' }]), ['U', 'Z', 'W', 'V', 'X', 'Y']);
+  t.end();
+});
