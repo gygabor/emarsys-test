@@ -2,14 +2,18 @@
 
 var holiday = (function () {
   function route(destination) {
-    let route = [];
-    destination.forEach( function (d) {
-      if (d.dest === d.rule) {
-        route.push(d.dest);
+    let trip = [];
+    destination.forEach(function (d) {
+      if (trip.indexOf(d.dest) === -1) {
+        if (d.dest === d.rule) {
+          trip.push(d.dest);
+        } else {
+          trip.push(d.rule);
+          trip.push(d.dest);
+        }
       }
-
-    })
-    return route;
+    });
+    return trip;
   }
 
   return {

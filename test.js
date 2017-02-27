@@ -12,3 +12,8 @@ test('route gets "X", "Y" should return "XY"', function (t) {
   t.deepEqual(holiday.route([{ dest: 'X', rule: 'X' }, { dest: 'Y', rule: 'Y' }]), ['X', 'Y']);
   t.end();
 });
+
+test('route gets "X", "Y", "Z" should return "XY"', function (t) {
+  t.deepEqual(holiday.route([{ dest: 'X', rule: 'X' }, { dest: 'Y', rule: 'Z' }, { dest: 'Z', rule: 'Z' }]), ['X', 'Z', 'Y']);
+  t.end();
+});
