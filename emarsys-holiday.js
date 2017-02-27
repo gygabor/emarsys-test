@@ -7,16 +7,18 @@ const holiday = (function () {
       if (trip.indexOf(d.dest) === -1) {
         if (d.dest === d.rule) {
           trip.push(d.dest);
-        } else {
+        } else if (d.dest !== d.rule && trip.indexOf(d.rule) === -1) {
           trip.push(d.rule);
+          trip.push(d.dest);
+        } else if (d.dest !== d.rule && trip.indexOf(d.rule) !== -1) {
           trip.push(d.dest);
         }
       } else if (d.dest !== d.rule) {
-        if (trip.indexOf(d.rule)) {
+        if (trip.indexOf(d.rule) !== -1) {
           trip.splice(trip.indexOf(d.rule), 1);
         }
         trip.splice(trip.indexOf(d.dest), 0, d.rule);
-      }
+        }
     });
     return trip;
   }
