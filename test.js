@@ -89,6 +89,6 @@ test('route gets "U", "V", "W", "X", "Y", "Z" resort at the end', function (t) {
 });
 
 test('Throw error if the destination is not a string', function (t) {
-  t.throws(holiday.route([{ dest: 1, rule: 'Z' }, { dest: 'V', rule: 'V' }], Error));
+  t.throws(holiday.route([{ dest: 1, rule: 'Z' }, { dest: 'V', rule: 'V' }], 'Invalid value'));
   t.end();
 });
