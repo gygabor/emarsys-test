@@ -4,6 +4,9 @@ const holiday = (function () {
   function route(destination) {
     const trip = [];
     destination.forEach(function (d) {
+      if (typeof d.dest !== 'string' || typeof d.rule !== 'string') {
+        throw new Error('Invalid value');
+      }
       if (trip.indexOf(d.dest) === -1) {
         if (d.dest === d.rule) {
           trip.push(d.dest);

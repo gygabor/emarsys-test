@@ -83,7 +83,12 @@ test('route gets "U", "V", "W", "X", "Y", "U"', function (t) {
   t.end();
 });
 
-test('route gets "U", "V", "W", "X", "Y", "Z" ', function (t) {
+test('route gets "U", "V", "W", "X", "Y", "Z" resort at the end', function (t) {
   t.deepEqual(holiday.route([{ dest: 'U', rule: 'Z' }, { dest: 'V', rule: 'V' }, { dest: 'W', rule: 'V' }, { dest: 'X', rule: 'Y' }, { dest: 'Y', rule: 'V' }, { dest: 'Z', rule: 'X' }]), ['V', 'Y', 'X', 'Z', 'U', 'W']);
+  t.end();
+});
+
+test('Throw error if the destination is not a string', function (t) {
+  t.throws(holiday.route([{ dest: 1, rule: 'Z' }, { dest: 'V', rule: 'V' }], Error));
   t.end();
 });
