@@ -9,16 +9,16 @@ const kahnAlgoritm = (function () {
 
     graph.forEach(function (node) {
       let findElemRoute = true;
-      let m = node.dest;
-      let l = node.rule;
-      let n = [m, 0];
-      inDegree.push(n);
+      let dest = node.dest;
+      let rule = node.rule;
+      let element = [dest, 0];
+      inDegree.push(element);
       while (findElemRoute){
-        if (m != l) {
-          m = l;
-          graph.forEach(function(e){
-            if (m === e.dest){
-              l = e.rule;
+        if (dest != rule) {
+          dest = rule;
+          graph.forEach(function (e) {
+            if (dest === e.dest){
+              rule = e.rule;
             }
           });
           inDegree[i][1]++;
@@ -39,7 +39,7 @@ const kahnAlgoritm = (function () {
     while (nodeWithoutEdges.length > 0) {
       let elem = nodeWithoutEdges.shift();
       sortedElements.push(elem);
-      graph.forEach(function (e, index){
+      graph.forEach(function (e, index) {
         inDegree[index][1]--;
         if (inDegree[index][1] === 0) {
           nodeWithoutEdges.push(inDegree[index][0]);
